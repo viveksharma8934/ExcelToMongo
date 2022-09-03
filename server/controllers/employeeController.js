@@ -57,14 +57,13 @@ router.post("/upload", upload.single("file"), async (req, res) => {
     },
     (err) => {
       if(!err){
-        console.log("Data inserted successfully");
+        res.send({
+          message: "Data inserted successfuly",
+          filename: req.file.originalname,
+        });
       };
     }
   );
-  res.send({
-    message: "Data inserted successfuly",
-    filename: req.file.originalname,
-  });
 });
 
 module.exports = router;
